@@ -1,0 +1,15 @@
+required:
+  - id
+  - name
+properties:
+  tankId:
+    type: integer
+    format: int64
+  name:
+    type: string
+  updateDate:
+    type: string
+    format: date
+  capacity:
+    type: integer
+    format: int32
