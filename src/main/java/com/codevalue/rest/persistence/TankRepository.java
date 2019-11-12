@@ -4,6 +4,9 @@ import com.codevalue.rest.entities.TankEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
-public interface TankRepository extends MongoRepository<TankEntity,String> {
+public interface TankRepository extends MongoRepository<TankEntity,String> , CustomRepository{
+
 }

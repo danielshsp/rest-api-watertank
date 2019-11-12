@@ -9,5 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class TankEntity {
     @Id
     private String id;
-    private String name;
+    private Integer tankId;
+    private Integer capacity;
 }
