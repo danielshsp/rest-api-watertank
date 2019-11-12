@@ -18,20 +18,23 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TankController implements TankApi {
     private final TankFacade tankFacade;
-
+    //For testing
     @GetMapping("/tank/all")
     public List<TankEntity> all(){
         return tankFacade.all();
     }
 
+    @Override
     public ResponseEntity<Tank> findCurrentTank() {
         return ResponseEntity.ok(tankFacade.currentTankCapacity());
     }
+
+    @Override
     public ResponseEntity<Tank> findMaxTankCapacity() {
         return ResponseEntity.ok(tankFacade.maxTankCapacity());
     }
+    @Override
     public ResponseEntity<Tank> updateTankCapacity(Integer capacity) {
-
         return new ResponseEntity(tankFacade.updateTankCapacity(capacity), HttpStatus.ACCEPTED);
     }
 

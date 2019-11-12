@@ -48,7 +48,7 @@ public class TankFacadeimpl implements TankFacade {
         }
         ModelMapper modelMapper = new ModelMapper();
         Tank tankDTO = modelMapper.map(tank,Tank.class);
-        // Artificial delay of 1s for terminated thread
+        // Artificial delay of 1s for terminated the thread
         Thread.sleep(1000L);
         return CompletableFuture.completedFuture(tankDTO);
 
