@@ -25,6 +25,7 @@ public class StartupService implements CommandLineRunner {
         //schedule delete for water tank
         CompletableFuture<Void> page2 = tankFacade.deleteCapacityOfTank(0);
         // Block and wait for the future to complete
+        CompletableFuture.anyOf(page2);
         page2.get();
 
 
