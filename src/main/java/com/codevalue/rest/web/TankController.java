@@ -34,7 +34,7 @@ public class TankController implements TankApi {
         return ResponseEntity.ok(tankFacade.maxTankCapacity());
     }
     @Override
-    public ResponseEntity<Tank> updateTankCapacity(Integer capacity) {
+    public ResponseEntity<Tank> addWater(Integer capacity) {
         return new ResponseEntity(tankFacade.updateTankCapacity(capacity), HttpStatus.ACCEPTED);
     }
 

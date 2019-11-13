@@ -17,6 +17,7 @@ public class TankService {
     public void save(TankEntity tank){
         tankRepository.save(tank);
     }
+
     public List<TankEntity> all(){
         return tankRepository.findAll();
     }
@@ -35,17 +36,28 @@ public class TankService {
         return tankDTO;
     }
 
-    public Tank updateTankCapacity(Integer capacity){
+    public synchronized Tank updateTankCapacity(Integer capacity){
         List<TankEntity> tankEntity = tankRepository.findAll();
         TankEntity tank = null;
+        int capicityFlag = 0;
         for( TankEntity tanks: tankEntity){
-            if (tanks.getCapacity() + capacity <= 50) {
-                tanks.setCapacity(tanks.getCapacity() + capacity);
-                 tank= tankRepository.save(tanks);
+            if (tanks.getCapacity() + capacity <= 50 && capacity > 0) {
+                     tanks.setCapacity(tanks.getCapacity() + capacity);
+                     tank = tankRepository.save(tanks);
+            }else if (tanks.getCapacity() + capacity > 50 && capacity > 0) {
+                        capicityFlag = 1;
+            }else{
+                     tanks.setCapacity(tanks.getCapacity() -1);
+                     tank = tankRepository.save(tanks);
             }
         }
-        ModelMapper modelMapper = new ModelMapper();
-        Tank tankDTO = modelMapper.map(tank,Tank.class );
+        Tank tankDTO;
+        if (capicityFlag == 1 ){
+                 tankDTO = null;
+        }else {
+                ModelMapper modelMapper = new ModelMapper();
+                tankDTO = modelMapper.map(tank, Tank.class);
+        }
         return tankDTO;
     }
 

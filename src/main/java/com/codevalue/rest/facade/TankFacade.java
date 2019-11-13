@@ -12,7 +12,7 @@ public interface TankFacade {
      List<TankEntity> all();
      Tank maxTankCapacity();
      Tank currentTankCapacity();
-     Tank updateTankCapacity(Integer capacity);
+     boolean updateTankCapacity(Integer capacity);
      CompletableFuture<Void> deleteCapacityOfTank(Integer capacity) throws InterruptedException;
      CompletableFuture<Tank> startupTanks() throws InterruptedException;
 }

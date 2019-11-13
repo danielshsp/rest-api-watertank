@@ -50,7 +50,7 @@ paths:
             items:
               $ref: '#/definitions/tank'
         400:
-          description: unexpected error
+          description: bad request
           schema:
             $ref: '#/definitions/errorModel'
         401:
@@ -79,7 +79,7 @@ paths:
           schema:
             $ref: '#/definitions/tank'
         400:
-          description: unexpected error
+          description: bad request
           schema:
             $ref: '#/definitions/errorModel'
         401:
@@ -102,7 +102,7 @@ paths:
           schema:
             $ref: '#/definitions/tank'
         400:
-          description: unexpected error
+          description: bad request
           schema:
             $ref: '#/definitions/errorModel'
         401:
@@ -115,7 +115,7 @@ paths:
             $ref: '#/definitions/errorModel'
   /tank/max:
     get:
-      description: Returns a tank
+      description: Returns a tank with max capacity
       operationId: findMaxTankCapacity
       produces:
         - application/json
@@ -125,7 +125,7 @@ paths:
           schema:
             $ref: '#/definitions/tank'
         400:
-          description: unexpected error
+          description: bad request
           schema:
             $ref: '#/definitions/errorModel'
         401:
@@ -138,8 +138,8 @@ paths:
             $ref: '#/definitions/errorModel'
   /tank/{capacity}:
     put:
-      description: Returns a tank
-      operationId: updateTankCapacity
+      description: Returns boolean
+      operationId: addWater
       produces:
         - application/json
       parameters:
@@ -155,7 +155,7 @@ paths:
           schema:
             $ref: '#/definitions/tank'
         400:
-          description: unexpected error
+          description: bad request
           schema:
             $ref: '#/definitions/errorModel'
         401:

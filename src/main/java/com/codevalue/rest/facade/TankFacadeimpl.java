@@ -15,6 +15,7 @@ import java.util.concurrent.CompletableFuture;
 @Slf4j
 @AllArgsConstructor
 public class TankFacadeimpl implements TankFacade {
+
     private final TankService tankService;
     @Override
     public List<TankEntity> all() {
@@ -32,10 +33,15 @@ public class TankFacadeimpl implements TankFacade {
     }
 
     @Override
-    public Tank updateTankCapacity(Integer capacity) {
-        return tankService.updateTankCapacity(capacity);
+    public boolean updateTankCapacity(Integer capacity) {
+        Tank tankDTO = tankService.updateTankCapacity(capacity);
+        if(tankDTO != null ){
+            return true;
+        }
+        return false;
     }
 
+    //Init 0-9 tanks with 50 liter of water
     @Async("threadPoolTaskExecutor")
     public CompletableFuture<Tank> startupTanks() throws InterruptedException {
         TankEntity tank = null;
@@ -56,12 +62,18 @@ public class TankFacadeimpl implements TankFacade {
 
     @Async("threadPoolTaskExecutor")
     public CompletableFuture<Void> deleteCapacityOfTank(Integer capacity) throws InterruptedException {
-        log.info("Begin - delete liter from the tanks" );
-        // Artificial delay of 1m for tank logic purposes
-        Thread.sleep(60000L);
-        tankService.updateTankCapacity(capacity);
-        //CompletableFuture..completedFuture();
-
+        int i = 1;
+        while (i > 0){
+            log.info("Begin - delete liter from the tanks" );
+            // Artificial delay of 1m for tank logic purposes
+            Thread.sleep(60000L);
+            Tank tankDTO = tankService.updateTankCapacity(capacity);
+            log.info("finish - delete liter from the tanks" );
+            if(tankDTO != null)
+                i++;
+            else
+                i=0;
+        }
         return null;
     }
 }
