@@ -5,8 +5,10 @@ import com.codevalue.rest.persistence.TankRepository;
 import com.codevalue.restserver.dto.Tank;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 @Service
@@ -18,8 +20,11 @@ public class TankService {
         tankRepository.save(tank);
     }
 
-    public List<TankEntity> all(){
-        return tankRepository.findAll();
+    public List<Tank> all(){
+        List<TankEntity> tankEntity =  tankRepository.findAll();
+        Type listType = new TypeToken<List<Tank>>() {}.getType();
+        List<Tank> tanklist = new ModelMapper().map(tankEntity, listType);
+        return  tanklist;
     }
 
     public Tank maxTankCapacity(){

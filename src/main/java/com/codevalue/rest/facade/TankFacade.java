@@ -9,7 +9,7 @@ import java.util.concurrent.CompletableFuture;
 
 @Service
 public interface TankFacade {
-     List<TankEntity> all();
+     List<Tank> all();
      Tank maxTankCapacity();
      Tank currentTankCapacity();
      boolean updateTankCapacity(Integer capacity);

@@ -20,7 +20,7 @@ public class TankController implements TankApi {
     private final TankFacade tankFacade;
     //For testing
     @GetMapping("/tank/all")
-    public List<TankEntity> all(){
+    public List<Tank> all(){
         return tankFacade.all();
     }
 

@@ -20,7 +20,7 @@ public class TankFacadeimpl implements TankFacade {
 
     private final TankService tankService;
     @Override
-    public List<TankEntity> all() {
+    public List<Tank> all() {
         return tankService.all();
     }
 
