@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class TankService {
+ public class TankService {
     private final TankRepository tankRepository;
 
     public void save(TankEntity tank){

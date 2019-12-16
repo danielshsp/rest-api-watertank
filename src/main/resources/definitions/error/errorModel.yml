@@ -3,8 +3,13 @@ required:
   - code
   - message
 properties:
-  code:
-    type: integer
-    format: int32
+  timestamp:
+    type: string
+    format: date
   message:
     type: string
+  details:
+    type: string
+
+
+
