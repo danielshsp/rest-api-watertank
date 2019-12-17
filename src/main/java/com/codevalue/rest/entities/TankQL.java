@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class TankQL {
     @Id
     @GraphQLQuery(name = "id", description = "A object id")
-    private String id; 
+    private String id;
     @GraphQLQuery(name = "tankId", description = "A thank's id")
     private Integer tankId;
     @GraphQLQuery(name = "capacity", description = "A capacity tank")
