@@ -1,9 +1,7 @@
 package com.codevalue.rest.exception;
 
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
-
 import com.codevalue.restserver.dto.ErrorModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
